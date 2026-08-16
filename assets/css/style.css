@@ -1367,19 +1367,22 @@ img {
   }
 
   .category-tabs {
-    width: 100%;
+    width: calc(100% + 24px);
+    margin: 0 -12px;
     justify-content: flex-start;
-    padding: 4px 4px 8px;
+    padding: 4px 14px 10px;
     gap: 8px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
   }
 
   .category-tab {
-    padding: 6px 13px;
-    font-size: 0.8rem;
+    padding: 6px 14px;
+    font-size: 0.82rem;
     border-radius: 20px;
     flex-shrink: 0;
+    scroll-snap-align: start;
   }
 
   .category-tab .tab-count {
