@@ -254,25 +254,37 @@ img {
 
 .category-tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 8px;
+}
+
+.category-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .category-tab {
   background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 50px;
-  padding: 8px 18px;
-  font-size: 0.88rem;
+  padding: 7px 15px;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--ink-soft);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .category-tab:hover {
@@ -292,9 +304,10 @@ img {
 
 .category-tab .tab-count {
   background: rgba(0, 0, 0, 0.08);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   padding: 1px 7px;
   border-radius: 10px;
+  font-weight: 700;
 }
 
 .category-tab.active .tab-count {
@@ -1351,18 +1364,24 @@ img {
   }
 
   .category-tabs {
-    gap: 6px;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 4px 4px 8px;
+    gap: 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .category-tab {
-    padding: 5px 12px;
-    font-size: 0.78rem;
+    padding: 6px 13px;
+    font-size: 0.8rem;
     border-radius: 20px;
+    flex-shrink: 0;
   }
 
   .category-tab .tab-count {
-    font-size: 0.7rem;
-    padding: 0 5px;
+    font-size: 0.72rem;
+    padding: 1px 6px;
   }
 
   /* Slim 2-column mobile card grid like iLovePDF */
@@ -1373,16 +1392,22 @@ img {
   }
 
   .tool-card {
-    padding: 13px 11px;
+    padding: 14px 12px;
     border-radius: 12px;
     gap: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .tool-card:active {
+    transform: scale(0.97);
+    background: var(--bg-soft);
   }
 
   .tool-card .icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    font-size: 1.1rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    font-size: 1.15rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   }
 
