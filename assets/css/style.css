@@ -1367,27 +1367,26 @@ img {
   }
 
   .category-tabs {
-    width: calc(100% + 24px);
-    margin: 0 -12px;
-    justify-content: flex-start;
-    padding: 4px 14px 10px;
-    gap: 8px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
   }
 
   .category-tab {
-    padding: 6px 14px;
-    font-size: 0.82rem;
+    padding: 5px 11px;
+    font-size: 0.78rem;
     border-radius: 20px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    gap: 4px;
   }
 
   .category-tab .tab-count {
-    font-size: 0.72rem;
-    padding: 1px 6px;
+    font-size: 0.7rem;
+    padding: 0 5px;
   }
 
   /* Slim 2-column mobile card grid like iLovePDF */
