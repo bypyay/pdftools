@@ -1,0 +1,82 @@
+<?php
+$root = '../../';
+$page_title = 'Compare PDF Online Free — Visual PDF Diff Viewer | Daily1Step PDF';
+$page_description = 'Compare two PDF files side-by-side or with visual diff overlay online for free. Easily spot changes and revisions. Processed entirely in your browser.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Compare PDF</h1>
+      <p>Compare two versions of a PDF document side-by-side or with visual difference highlights.</p>
+    </div>
+
+    <div style="display:flex; gap:20px; flex-wrap:wrap; max-width:960px; margin:0 auto;" id="dualDropzoneWrap">
+      <div class="dropzone" id="dropzoneA" style="flex:1; min-width:280px;">
+        <input type="file" id="fileInputA" accept="application/pdf">
+        <p><strong>Select Original PDF (File A)</strong></p>
+        <p style="color:var(--ink-soft); font-size:.82rem;" id="nameA">Drag & drop or click</p>
+      </div>
+
+      <div class="dropzone" id="dropzoneB" style="flex:1; min-width:280px;">
+        <input type="file" id="fileInputB" accept="application/pdf">
+        <p><strong>Select Revised PDF (File B)</strong></p>
+        <p style="color:var(--ink-soft); font-size:.82rem;" id="nameB">Drag & drop or click</p>
+      </div>
+    </div>
+
+    <div id="compareViewerWrap" style="display:none; max-width:1100px; margin:24px auto 0;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px; background:var(--bg-soft); padding:12px 18px; border-radius:10px; border:1px solid var(--border);">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button type="button" class="btn secondary" id="prevPageBtn" style="padding:6px 12px;">&larr; Prev</button>
+          <span id="pageNavLabel" style="font-weight:700; font-size:.9rem;">Page 1</span>
+          <button type="button" class="btn secondary" id="nextPageBtn" style="padding:6px 12px;">Next &rarr;</button>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="btn secondary active" id="modeSideBtn" style="padding:6px 14px; font-size:.85rem;">Side-by-Side</button>
+          <button type="button" class="btn secondary" id="modeDiffBtn" style="padding:6px 14px; font-size:.85rem;">Visual Diff (Overlay)</button>
+        </div>
+
+        <button type="button" class="btn secondary" id="resetCompareBtn" style="padding:6px 12px; font-size:.85rem;">Compare Other Files</button>
+      </div>
+
+      <!-- Side by Side view -->
+      <div id="sideBySideView" style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+        <div style="flex:1; min-width:300px; text-align:center;">
+          <h4 style="margin:0 0 8px; color:var(--ink);">Original (File A)</h4>
+          <div id="canvasWrapA" style="border:1.5px solid var(--border); border-radius:8px; overflow:hidden; display:inline-block; background:#fff; box-shadow:var(--shadow-sm);"></div>
+        </div>
+        <div style="flex:1; min-width:300px; text-align:center;">
+          <h4 style="margin:0 0 8px; color:var(--red);">Revised (File B)</h4>
+          <div id="canvasWrapB" style="border:1.5px solid var(--border); border-radius:8px; overflow:hidden; display:inline-block; background:#fff; box-shadow:var(--shadow-sm);"></div>
+        </div>
+      </div>
+
+      <!-- Diff overlay view -->
+      <div id="diffView" style="display:none; text-align:center;">
+        <h4 style="margin:0 0 8px; color:var(--ink);">Visual Difference (Red = Changed/Added in File B)</h4>
+        <div id="diffCanvasWrap" style="border:1.5px solid var(--border); border-radius:8px; overflow:hidden; display:inline-block; background:#fff; box-shadow:var(--shadow-sm);"></div>
+      </div>
+    </div>
+
+    <p class="privacy-note" style="margin-top:30px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — compared 100% locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How to compare two PDF files</h2>
+      <ol>
+        <li>Select or drop the original document (File A) into the left box.</li>
+        <li>Select or drop the revised document (File B) into the right box.</li>
+        <li>Review side-by-side changes or switch to <strong>Visual Diff</strong> to highlight modified pixels in red.</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/compare-pdf.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

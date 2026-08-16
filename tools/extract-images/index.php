@@ -1,0 +1,77 @@
+<?php
+$root = '../../';
+$page_title = 'Extract Images from PDF Online Free | Daily1Step PDF';
+$page_description = 'Extract all embedded photos and images from PDF documents online for free. Download as PNG/JPG or ZIP archive. Processed entirely in your browser.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Extract Images from PDF</h1>
+      <p>Extract all embedded pictures, graphics, and photos from your PDF file in high quality.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf">
+      <p><strong>Click to select a PDF file</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">One file at a time</p>
+    </div>
+
+    <div id="fileInfo" style="display:none; max-width:960px; margin:20px auto 0;">
+      <div class="file-row">
+        <span class="name" id="fileName"></span>
+        <span class="size" id="pageCount"></span>
+        <button class="remove" id="removeFile" title="Remove">&times;</button>
+      </div>
+
+      <div id="imagesGalleryWrap" style="display:none; margin-top:24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+          <span style="font-weight:700; font-size:1rem; color:var(--ink);" id="foundImagesCount">Found Images:</span>
+          <button type="button" class="btn secondary" id="downloadAllZipBtn" style="padding:8px 18px; font-size:.9rem;">📦 Download All as ZIP</button>
+        </div>
+        <div id="imagesGrid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:16px;"></div>
+      </div>
+    </div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="extractImgBtn">Extract Images</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Scanning for images...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Images Extracted!</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadZipLink" download="extracted-images.zip">Download images.zip</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Extract from another file</button></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files and images never leave your device — extracted 100% locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How to extract images from a PDF</h2>
+      <ol>
+        <li>Upload your PDF file.</li>
+        <li>Click <strong>Extract Images</strong> to scan all pages.</li>
+        <li>Preview found images and download individual pictures or get everything in a single ZIP package.</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>vendor/jszip.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/extract-images.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

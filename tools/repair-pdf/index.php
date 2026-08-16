@@ -1,0 +1,79 @@
+<?php
+$root = '../../';
+$page_title = 'Repair PDF Online Free — Fix Corrupted PDF Files | Daily1Step PDF';
+$page_description = 'Repair and recover damaged or corrupted PDF files online for free. Rebuild broken PDF structures and recover unreadable pages. Processed entirely in your browser.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Repair PDF</h1>
+      <p>Analyze and recover damaged, corrupted, or unreadable PDF files and rebuild a clean document.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf">
+      <p><strong>Click to select a corrupted PDF file</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">One file at a time</p>
+    </div>
+
+    <div id="fileInfo" style="display:none; max-width:760px; margin:20px auto 0;">
+      <div class="file-row">
+        <span class="name" id="fileName"></span>
+        <span class="size" id="fileSize"></span>
+        <button class="remove" id="removeFile" title="Remove">&times;</button>
+      </div>
+
+      <div style="margin-top:20px; padding:18px; background:var(--bg-soft); border-radius:12px; border:1.5px solid var(--border);">
+        <p style="font-weight:600; margin:0 0 8px; color:var(--ink);">🛠️ Repair Diagnostics:</p>
+        <ul style="margin:0; padding-left:20px; font-size:.88rem; color:var(--ink-soft); line-height:1.6;">
+          <li>Reconstructs damaged cross-reference (XRef) tables and trailers.</li>
+          <li>Recovers readable page objects and embedded fonts.</li>
+          <li>Re-encodes broken image streams and page hierarchies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="repairBtn">Repair PDF Document</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Analyzing & repairing file...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>PDF Repaired Successfully!</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadLink" download="repaired.pdf">Download repaired.pdf</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Repair another file</button></div>
+    </div>
+
+    <div class="continue-box" id="continueBox" style="display:none;">
+      <p class="continue-title">Continue to&hellip;</p>
+      <div class="continue-grid" id="continueGrid"></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — repaired 100% locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How PDF repair works</h2>
+      <p>PDF documents can become corrupt due to interrupted downloads, faulty mail attachments, or disk errors. Our repair tool parses raw PDF streams, extracts all salvageable page contents, and generates a fresh, clean PDF structure.</p>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf-lib.min.js"></script>
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/repair-pdf.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
