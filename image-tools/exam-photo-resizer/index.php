@@ -1,0 +1,79 @@
+<?php
+$root = '../../';
+$page_title = 'Government Exam Photo & Signature Resizer Online — SSC, UPSC, PAN Card | Daily1Step';
+$page_description = 'Resize and compress photo and signature for SSC, UPSC, PAN Card, Railway RRB, and IBPS exams to exact pixel dimensions and KB limits. 100% free and client-side.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Govt Exam Photo & Signature Resizer</h1>
+      <p>Instant 1-click resize & KB compression matching official guidelines for SSC, UPSC, PAN Card, Banking & Railway recruitment.</p>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="image/*">
+      <p><strong>Click to select photo or signature</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">Supports JPG, PNG, WEBP</p>
+    </div>
+
+    <div id="editorWrap" style="display:none; max-width:820px; margin:20px auto 0;">
+      <div style="background:var(--bg-soft); border:1.5px solid var(--border); border-radius:14px; padding:22px;">
+        <div class="file-row" style="margin-bottom:16px;">
+          <span class="name" id="fileName"></span>
+          <span class="size" id="fileOriginalSize"></span>
+          <button class="remove" id="removeFile" title="Remove">&times;</button>
+        </div>
+
+        <label style="display:block; font-weight:700; font-size:.92rem; margin-bottom:8px; color:var(--ink);">Select Exam / Application Preset</label>
+        <select id="examPreset" style="width:100%; padding:12px; border:1.5px solid var(--border); border-radius:8px; font-weight:700; font-size:.95rem; color:var(--red); margin-bottom:18px;">
+          <optgroup label="Staff Selection Commission (SSC)">
+            <option value="ssc_photo" selected>SSC Photo (3.5 x 4.5 cm, 20 KB - 50 KB)</option>
+            <option value="ssc_sign">SSC Signature (4.0 x 2.0 cm, 10 KB - 20 KB)</option>
+          </optgroup>
+          <optgroup label="Union Public Service Commission (UPSC)">
+            <option value="upsc_photo">UPSC Photo (350 x 350 px, 20 KB - 300 KB)</option>
+            <option value="upsc_sign">UPSC Signature (350 x 350 px, 20 KB - 300 KB)</option>
+          </optgroup>
+          <optgroup label="PAN Card (NSDL / UTIITSL)">
+            <option value="pan_photo">PAN Card Photo (213 x 213 px, 300 DPI, Under 30 KB)</option>
+            <option value="pan_sign">PAN Card Signature (400 x 200 px, 200 DPI, Under 20 KB)</option>
+          </optgroup>
+          <optgroup label="Banking (IBPS / SBI)">
+            <option value="ibps_photo">IBPS Photo (4.5 x 3.5 cm, 20 KB - 50 KB)</option>
+            <option value="ibps_sign">IBPS Signature (140 x 60 px, 10 KB - 20 KB)</option>
+          </optgroup>
+          <optgroup label="Railway Recruitment (RRB)">
+            <option value="rrb_photo">Railway RRB Photo (35 x 45 mm, 20 KB - 50 KB)</option>
+            <option value="rrb_sign">Railway RRB Signature (50 x 20 mm, 10 KB - 40 KB)</option>
+          </optgroup>
+        </select>
+
+        <div style="display:flex; justify-content:center; margin:16px 0;">
+          <img id="imgPreview" style="max-width:280px; max-height:220px; border-radius:8px; border:1.5px solid var(--border); background:#fff; object-fit:contain;">
+        </div>
+
+        <button class="btn" id="processBtn" style="width:100%;">Resize & Compress For Exam</button>
+      </div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Photo Formatted Successfully!</h3>
+      <p id="resultInfo"></p>
+      <div style="display:flex; justify-content:center; margin:14px 0;">
+        <img id="finalImg" style="max-width:280px; max-height:220px; border-radius:8px; border:1.5px solid var(--border); box-shadow:var(--shadow);">
+      </div>
+      <a class="btn" id="downloadLink" download="exam-ready.jpg">Download Formatted Image</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Process another photo</button></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your photos never leave your device — processed 100% locally in your browser.
+    </p>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>assets/js/image-tools/exam-photo-resizer.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

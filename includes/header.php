@@ -26,12 +26,13 @@ if (!isset($canonical)) { $canonical = ''; }
 <body>
 <header class="site-header">
   <div class="container">
-    <a href="<?php echo $root; ?>index.php" class="brand">Daily1Step PDF<span class="dot">.</span></a>
+    <a href="<?php echo $root; ?>index.php" class="brand">Daily1Step<span class="dot">.</span></a>
     <nav class="main-nav">
-      <a href="<?php echo $root; ?>index.php">All Tools</a>
+      <a href="<?php echo $root; ?>index.php">📄 PDF Tools</a>
+      <a href="<?php echo $root; ?>image-tools/index.php" style="color:var(--red); font-weight:700;">🖼️ Image Tools</a>
       <a href="<?php echo $root; ?>tools/merge-pdf/">Merge PDF</a>
-      <a href="<?php echo $root; ?>tools/split-pdf/">Split PDF</a>
-      <a href="<?php echo $root; ?>tools/compress-pdf/">Compress PDF</a>
+      <a href="<?php echo $root; ?>image-tools/compress-image-kb/">Compress in KB</a>
+      <a href="<?php echo $root; ?>image-tools/passport-photo-maker/">Passport Photo</a>
       <a href="<?php echo $root; ?>about.php">About</a>
     </nav>
   </div>
