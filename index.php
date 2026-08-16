@@ -4,29 +4,50 @@ $page_title = 'Daily1Step PDF — Free Online PDF Tools | 22 Browser-Based PDF T
 $page_description = 'Every tool you need to work with PDFs in one place: merge, split, compress, sign, organize, crop, and convert PDF files online, 100% free. Processed entirely in your browser.';
 include __DIR__ . '/includes/header.php';
 
+$categories = [
+  'all' => ['title' => 'All Tools', 'icon' => '🌟'],
+  'organize' => ['title' => 'Organize PDF', 'icon' => '📁'],
+  'optimize' => ['title' => 'Optimize PDF', 'icon' => '⚡'],
+  'convert-to' => ['title' => 'Convert to PDF', 'icon' => '🔄'],
+  'convert-from' => ['title' => 'Convert from PDF', 'icon' => '📄'],
+  'edit' => ['title' => 'Edit & Stamp', 'icon' => '✍️'],
+  'security' => ['title' => 'Security & Sign', 'icon' => '🔒'],
+];
+
 $tools = [
-  ['icon' => 'merge', 'color' => '#e5322d', 'title' => 'Merge PDF', 'desc' => 'Combine multiple PDFs into one single file.', 'href' => 'tools/merge-pdf/', 'live' => true],
-  ['icon' => 'split', 'color' => '#1ba94c', 'title' => 'Split PDF', 'desc' => 'Extract or split pages into separate PDF files.', 'href' => 'tools/split-pdf/', 'live' => true],
-  ['icon' => 'compress', 'color' => '#e58a1c', 'title' => 'Compress PDF', 'desc' => 'Reduce PDF file size while keeping quality.', 'href' => 'tools/compress-pdf/', 'live' => true],
-  ['icon' => 'sign', 'color' => '#8a3ee5', 'title' => 'Sign PDF', 'desc' => 'Draw, type, or upload your signature to place on any page.', 'href' => 'tools/sign-pdf/', 'live' => true],
-  ['icon' => 'organize', 'color' => '#e5322d', 'title' => 'Organize PDF', 'desc' => 'Sort, reorder, rotate, or delete pages visually.', 'href' => 'tools/organize-pdf/', 'live' => true],
-  ['icon' => 'extract', 'color' => '#1ba94c', 'title' => 'Extract Pages', 'desc' => 'Extract specific pages or page ranges into a new PDF.', 'href' => 'tools/extract-pages/', 'live' => true],
-  ['icon' => 'crop', 'color' => '#0aa3a3', 'title' => 'Crop PDF', 'desc' => 'Trim margins or crop custom areas with interactive box.', 'href' => 'tools/crop-pdf/', 'live' => true],
-  ['icon' => 'watermark', 'color' => '#e5322d', 'title' => 'Watermark PDF', 'desc' => 'Stamp text or image watermark with cursor positioning.', 'href' => 'tools/watermark-pdf/', 'live' => true],
-  ['icon' => 'image', 'color' => '#2b7de9', 'title' => 'PDF to JPG', 'desc' => 'Convert every PDF page into a high-res JPG image.', 'href' => 'tools/pdf-to-jpg/', 'live' => true],
-  ['icon' => 'file', 'color' => '#8a3ee5', 'title' => 'JPG to PDF', 'desc' => 'Turn your JPG or PNG images into a PDF.', 'href' => 'tools/jpg-to-pdf/', 'live' => true],
-  ['icon' => 'word', 'color' => '#2b5ce9', 'title' => 'PDF to Word', 'desc' => 'Convert your PDF into an editable DOCX document.', 'href' => 'tools/pdf-to-word/', 'live' => true],
-  ['icon' => 'txt', 'color' => '#e58a1c', 'title' => 'PDF to Text', 'desc' => 'Extract clean plain text from your PDF document.', 'href' => 'tools/pdf-to-txt/', 'live' => true],
-  ['icon' => 'extract-img', 'color' => '#2b7de9', 'title' => 'Extract Images', 'desc' => 'Extract all embedded photos and graphics to ZIP.', 'href' => 'tools/extract-images/', 'live' => true],
-  ['icon' => 'grayscale', 'color' => '#4b5563', 'title' => 'Grayscale PDF', 'desc' => 'Convert color PDF to Black & White to save toner/ink.', 'href' => 'tools/grayscale-pdf/', 'live' => true],
-  ['icon' => 'rotate', 'color' => '#0aa3a3', 'title' => 'Rotate PDF', 'desc' => 'Rotate one or all pages of your PDF document.', 'href' => 'tools/rotate-pdf/', 'live' => true],
-  ['icon' => 'trash', 'color' => '#8a3ee5', 'title' => 'Delete Pages', 'desc' => 'Remove unwanted pages from a PDF document.', 'href' => 'tools/delete-pages/', 'live' => true],
-  ['icon' => 'number', 'color' => '#e58a1c', 'title' => 'Page Numbers', 'desc' => 'Add customized page numbers to your PDF.', 'href' => 'tools/page-numbers/', 'live' => true],
-  ['icon' => 'lock', 'color' => '#c81e1e', 'title' => 'Protect PDF', 'desc' => 'Add password encryption to secure your PDF.', 'href' => 'tools/protect-pdf/', 'live' => true],
-  ['icon' => 'unlock', 'color' => '#1ba94c', 'title' => 'Unlock PDF', 'desc' => 'Remove password protection and restrictions from PDF.', 'href' => 'tools/unlock-pdf/', 'live' => true],
-  ['icon' => 'repair', 'color' => '#e5322d', 'title' => 'Repair PDF', 'desc' => 'Recover damaged and corrupted PDF files.', 'href' => 'tools/repair-pdf/', 'live' => true],
-  ['icon' => 'compare', 'color' => '#2b5ce9', 'title' => 'Compare PDF', 'desc' => 'Compare two PDFs side-by-side or with visual diff.', 'href' => 'tools/compare-pdf/', 'live' => true],
-  ['icon' => 'html', 'color' => '#0aa3a3', 'title' => 'HTML to PDF', 'desc' => 'Convert HTML code, rich text, or web notes into PDF.', 'href' => 'tools/html-to-pdf/', 'live' => true],
+  // Organize
+  ['cat' => 'organize', 'icon' => 'merge', 'color' => '#e5322d', 'title' => 'Merge PDF', 'desc' => 'Combine multiple PDFs into one single file.', 'href' => 'tools/merge-pdf/', 'live' => true],
+  ['cat' => 'organize', 'icon' => 'split', 'color' => '#1ba94c', 'title' => 'Split PDF', 'desc' => 'Extract or split pages into separate PDF files.', 'href' => 'tools/split-pdf/', 'live' => true],
+  ['cat' => 'organize', 'icon' => 'organize', 'color' => '#e5322d', 'title' => 'Organize PDF', 'desc' => 'Sort, reorder, rotate, or delete pages visually.', 'href' => 'tools/organize-pdf/', 'live' => true],
+  ['cat' => 'organize', 'icon' => 'extract', 'color' => '#1ba94c', 'title' => 'Extract Pages', 'desc' => 'Extract specific pages or page ranges into a new PDF.', 'href' => 'tools/extract-pages/', 'live' => true],
+  ['cat' => 'organize', 'icon' => 'trash', 'color' => '#8a3ee5', 'title' => 'Delete Pages', 'desc' => 'Remove unwanted pages from a PDF document.', 'href' => 'tools/delete-pages/', 'live' => true],
+
+  // Optimize
+  ['cat' => 'optimize', 'icon' => 'compress', 'color' => '#e58a1c', 'title' => 'Compress PDF', 'desc' => 'Reduce PDF file size while keeping quality.', 'href' => 'tools/compress-pdf/', 'live' => true],
+  ['cat' => 'optimize', 'icon' => 'crop', 'color' => '#0aa3a3', 'title' => 'Crop PDF', 'desc' => 'Trim margins or crop custom areas with interactive box.', 'href' => 'tools/crop-pdf/', 'live' => true],
+  ['cat' => 'optimize', 'icon' => 'grayscale', 'color' => '#4b5563', 'title' => 'Grayscale PDF', 'desc' => 'Convert color PDF to Black & White to save toner/ink.', 'href' => 'tools/grayscale-pdf/', 'live' => true],
+  ['cat' => 'optimize', 'icon' => 'repair', 'color' => '#e5322d', 'title' => 'Repair PDF', 'desc' => 'Recover damaged and corrupted PDF files.', 'href' => 'tools/repair-pdf/', 'live' => true],
+
+  // Convert to PDF
+  ['cat' => 'convert-to', 'icon' => 'file', 'color' => '#8a3ee5', 'title' => 'JPG to PDF', 'desc' => 'Turn your JPG or PNG images into a PDF.', 'href' => 'tools/jpg-to-pdf/', 'live' => true],
+  ['cat' => 'convert-to', 'icon' => 'html', 'color' => '#0aa3a3', 'title' => 'HTML to PDF', 'desc' => 'Convert HTML code, rich text, or web notes into PDF.', 'href' => 'tools/html-to-pdf/', 'live' => true],
+
+  // Convert from PDF
+  ['cat' => 'convert-from', 'icon' => 'image', 'color' => '#2b7de9', 'title' => 'PDF to JPG', 'desc' => 'Convert every PDF page into a high-res JPG image.', 'href' => 'tools/pdf-to-jpg/', 'live' => true],
+  ['cat' => 'convert-from', 'icon' => 'word', 'color' => '#2b5ce9', 'title' => 'PDF to Word', 'desc' => 'Convert your PDF into an editable DOCX document.', 'href' => 'tools/pdf-to-word/', 'live' => true],
+  ['cat' => 'convert-from', 'icon' => 'txt', 'color' => '#e58a1c', 'title' => 'PDF to Text', 'desc' => 'Extract clean plain text from your PDF document.', 'href' => 'tools/pdf-to-txt/', 'live' => true],
+  ['cat' => 'convert-from', 'icon' => 'extract-img', 'color' => '#2b7de9', 'title' => 'Extract Images', 'desc' => 'Extract all embedded photos and graphics to ZIP.', 'href' => 'tools/extract-images/', 'live' => true],
+
+  // Edit & Stamp
+  ['cat' => 'edit', 'icon' => 'rotate', 'color' => '#0aa3a3', 'title' => 'Rotate PDF', 'desc' => 'Rotate one or all pages of your PDF document.', 'href' => 'tools/rotate-pdf/', 'live' => true],
+  ['cat' => 'edit', 'icon' => 'watermark', 'color' => '#e5322d', 'title' => 'Watermark PDF', 'desc' => 'Stamp text or image watermark with cursor positioning.', 'href' => 'tools/watermark-pdf/', 'live' => true],
+  ['cat' => 'edit', 'icon' => 'number', 'color' => '#e58a1c', 'title' => 'Page Numbers', 'desc' => 'Add customized page numbers to your PDF.', 'href' => 'tools/page-numbers/', 'live' => true],
+
+  // Security & Sign
+  ['cat' => 'security', 'icon' => 'sign', 'color' => '#8a3ee5', 'title' => 'Sign PDF', 'desc' => 'Draw, type, or upload your signature to place on any page.', 'href' => 'tools/sign-pdf/', 'live' => true],
+  ['cat' => 'security', 'icon' => 'lock', 'color' => '#c81e1e', 'title' => 'Protect PDF', 'desc' => 'Add password encryption to secure your PDF.', 'href' => 'tools/protect-pdf/', 'live' => true],
+  ['cat' => 'security', 'icon' => 'unlock', 'color' => '#1ba94c', 'title' => 'Unlock PDF', 'desc' => 'Remove password protection and restrictions from PDF.', 'href' => 'tools/unlock-pdf/', 'live' => true],
+  ['cat' => 'security', 'icon' => 'compare', 'color' => '#2b5ce9', 'title' => 'Compare PDF', 'desc' => 'Compare two PDFs side-by-side or with visual diff.', 'href' => 'tools/compare-pdf/', 'live' => true],
 ];
 ?>
 <section class="hero">
@@ -37,15 +58,46 @@ $tools = [
 </section>
 
 <section class="container">
-  <div class="tool-grid">
+  <!-- Search & Category Filters -->
+  <div class="tool-controls-wrap">
+    <div class="tool-search-box">
+      <span class="search-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="toolSearchInput" placeholder="Search for any tool (e.g. sign, merge, compress, protect)..." autocomplete="off">
+    </div>
+
+    <div class="category-tabs" id="categoryTabs">
+      <?php foreach ($categories as $catKey => $catData): 
+        $count = $catKey === 'all' ? count($tools) : count(array_filter($tools, function($t) use ($catKey) { return $t['cat'] === $catKey; }));
+      ?>
+        <button type="button" class="category-tab<?php echo $catKey === 'all' ? ' active' : ''; ?>" data-category="<?php echo $catKey; ?>">
+          <span><?php echo $catData['icon']; ?></span>
+          <span><?php echo $catData['title']; ?></span>
+          <span class="tab-count"><?php echo $count; ?></span>
+        </button>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <div class="tool-grid" id="mainToolGrid">
     <?php foreach ($tools as $t): ?>
-      <a class="tool-card<?php echo $t['live'] ? '' : ' disabled'; ?>" href="<?php echo $t['href']; ?>">
+      <a class="tool-card<?php echo $t['live'] ? '' : ' disabled'; ?>" 
+         href="<?php echo $t['href']; ?>"
+         data-category="<?php echo $t['cat']; ?>"
+         data-title="<?php echo strtolower($t['title']); ?>"
+         data-desc="<?php echo strtolower($t['desc']); ?>">
         <?php if (!$t['live']): ?><span class="badge">Coming soon</span><?php endif; ?>
         <span class="icon" style="background:<?php echo $t['color']; ?>"><?php echo icon_svg($t['icon']); ?></span>
         <h3><?php echo htmlspecialchars($t['title']); ?></h3>
         <p><?php echo htmlspecialchars($t['desc']); ?></p>
       </a>
     <?php endforeach; ?>
+  </div>
+
+  <div id="noResultsMsg" style="display:none; text-align:center; padding:50px 20px; color:var(--ink-soft);">
+    <p style="font-size:1.4rem; font-weight:700; color:var(--ink); margin-bottom:6px;">No tools found</p>
+    <p>Try searching for different keywords like "compress", "sign", "word", or "rotate".</p>
   </div>
 </section>
 
@@ -60,6 +112,56 @@ $tools = [
     <li><strong>Cross-Platform</strong> — works on Windows, Mac, Linux, Android, and iPhone in any modern browser.</li>
   </ul>
 </section>
+
+<script>
+(function() {
+  var searchInput = document.getElementById('toolSearchInput');
+  var categoryTabs = document.querySelectorAll('.category-tab');
+  var toolCards = document.querySelectorAll('.tool-card');
+  var noResults = document.getElementById('noResultsMsg');
+
+  var currentCategory = 'all';
+
+  function filterTools() {
+    var query = (searchInput.value || '').trim().toLowerCase();
+    var visibleCount = 0;
+
+    toolCards.forEach(function(card) {
+      var cat = card.getAttribute('data-category');
+      var title = card.getAttribute('data-title');
+      var desc = card.getAttribute('data-desc');
+
+      var matchesCat = (currentCategory === 'all' || cat === currentCategory);
+      var matchesQuery = !query || title.includes(query) || desc.includes(query);
+
+      if (matchesCat && matchesQuery) {
+        card.style.display = 'flex';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    if (noResults) {
+      noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
+  }
+
+  categoryTabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      categoryTabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      currentCategory = tab.getAttribute('data-category');
+      filterTools();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', filterTools);
+  }
+})();
+</script>
+
 <?php
 include __DIR__ . '/includes/footer.php';
 

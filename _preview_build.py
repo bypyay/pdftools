@@ -10,29 +10,50 @@ import html as htmlmod
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, '_preview')
 
+CATEGORIES = [
+    ('all', 'All Tools', '🌟'),
+    ('organize', 'Organize PDF', '📁'),
+    ('optimize', 'Optimize PDF', '⚡'),
+    ('convert-to', 'Convert to PDF', '🔄'),
+    ('convert-from', 'Convert from PDF', '📄'),
+    ('edit', 'Edit & Stamp', '✍️'),
+    ('security', 'Security & Sign', '🔒'),
+]
+
 TOOLS = [
-    ('merge', '#e5322d', 'Merge PDF', 'Combine multiple PDFs into one single file.', 'tools/merge-pdf/', True),
-    ('split', '#1ba94c', 'Split PDF', 'Extract or split pages into separate PDF files.', 'tools/split-pdf/', True),
-    ('compress', '#e58a1c', 'Compress PDF', 'Reduce PDF file size while keeping quality.', 'tools/compress-pdf/', True),
-    ('sign', '#8a3ee5', 'Sign PDF', 'Draw, type, or upload your signature to place on any page.', 'tools/sign-pdf/', True),
-    ('organize', '#e5322d', 'Organize PDF', 'Sort, reorder, rotate, or delete pages visually.', 'tools/organize-pdf/', True),
-    ('extract', '#1ba94c', 'Extract Pages', 'Extract specific pages or page ranges into a new PDF.', 'tools/extract-pages/', True),
-    ('crop', '#0aa3a3', 'Crop PDF', 'Trim margins or crop custom areas with interactive box.', 'tools/crop-pdf/', True),
-    ('watermark', '#e5322d', 'Watermark PDF', 'Stamp text or image watermark with cursor positioning.', 'tools/watermark-pdf/', True),
-    ('image', '#2b7de9', 'PDF to JPG', 'Convert every PDF page into a high-res JPG image.', 'tools/pdf-to-jpg/', True),
-    ('file', '#8a3ee5', 'JPG to PDF', 'Turn your JPG or PNG images into a PDF.', 'tools/jpg-to-pdf/', True),
-    ('word', '#2b5ce9', 'PDF to Word', 'Convert your PDF into an editable DOCX document.', 'tools/pdf-to-word/', True),
-    ('txt', '#e58a1c', 'PDF to Text', 'Extract clean plain text from your PDF document.', 'tools/pdf-to-txt/', True),
-    ('extract-img', '#2b7de9', 'Extract Images', 'Extract all embedded photos and graphics to ZIP.', 'tools/extract-images/', True),
-    ('grayscale', '#4b5563', 'Grayscale PDF', 'Convert color PDF to Black & White to save toner/ink.', 'tools/grayscale-pdf/', True),
-    ('rotate', '#0aa3a3', 'Rotate PDF', 'Rotate one or all pages of your PDF document.', 'tools/rotate-pdf/', True),
-    ('trash', '#8a3ee5', 'Delete Pages', 'Remove unwanted pages from a PDF document.', 'tools/delete-pages/', True),
-    ('number', '#e58a1c', 'Page Numbers', 'Add customized page numbers to your PDF.', 'tools/page-numbers/', True),
-    ('lock', '#c81e1e', 'Protect PDF', 'Add password encryption to secure your PDF.', 'tools/protect-pdf/', True),
-    ('unlock', '#1ba94c', 'Unlock PDF', 'Remove password protection and restrictions from PDF.', 'tools/unlock-pdf/', True),
-    ('repair', '#e5322d', 'Repair PDF', 'Recover damaged and corrupted PDF files.', 'tools/repair-pdf/', True),
-    ('compare', '#2b5ce9', 'Compare PDF', 'Compare two PDFs side-by-side or with visual diff.', 'tools/compare-pdf/', True),
-    ('html', '#0aa3a3', 'HTML to PDF', 'Convert HTML code, rich text, or web notes into PDF.', 'tools/html-to-pdf/', True),
+    # Organize
+    ('organize', 'merge', '#e5322d', 'Merge PDF', 'Combine multiple PDFs into one single file.', 'tools/merge-pdf/', True),
+    ('organize', 'split', '#1ba94c', 'Split PDF', 'Extract or split pages into separate PDF files.', 'tools/split-pdf/', True),
+    ('organize', 'organize', '#e5322d', 'Organize PDF', 'Sort, reorder, rotate, or delete pages visually.', 'tools/organize-pdf/', True),
+    ('organize', 'extract', '#1ba94c', 'Extract Pages', 'Extract specific pages or page ranges into a new PDF.', 'tools/extract-pages/', True),
+    ('organize', 'trash', '#8a3ee5', 'Delete Pages', 'Remove unwanted pages from a PDF document.', 'tools/delete-pages/', True),
+
+    # Optimize
+    ('optimize', 'compress', '#e58a1c', 'Compress PDF', 'Reduce PDF file size while keeping quality.', 'tools/compress-pdf/', True),
+    ('optimize', 'crop', '#0aa3a3', 'Crop PDF', 'Trim margins or crop custom areas with interactive box.', 'tools/crop-pdf/', True),
+    ('optimize', 'grayscale', '#4b5563', 'Grayscale PDF', 'Convert color PDF to Black & White to save toner/ink.', 'tools/grayscale-pdf/', True),
+    ('optimize', 'repair', '#e5322d', 'Repair PDF', 'Recover damaged and corrupted PDF files.', 'tools/repair-pdf/', True),
+
+    # Convert to PDF
+    ('convert-to', 'file', '#8a3ee5', 'JPG to PDF', 'Turn your JPG or PNG images into a PDF.', 'tools/jpg-to-pdf/', True),
+    ('convert-to', 'html', '#0aa3a3', 'HTML to PDF', 'Convert HTML code, rich text, or web notes into PDF.', 'tools/html-to-pdf/', True),
+
+    # Convert from PDF
+    ('convert-from', 'image', '#2b7de9', 'PDF to JPG', 'Convert every PDF page into a high-res JPG image.', 'tools/pdf-to-jpg/', True),
+    ('convert-from', 'word', '#2b5ce9', 'PDF to Word', 'Convert your PDF into an editable DOCX document.', 'tools/pdf-to-word/', True),
+    ('convert-from', 'txt', '#e58a1c', 'PDF to Text', 'Extract clean plain text from your PDF document.', 'tools/pdf-to-txt/', True),
+    ('convert-from', 'extract-img', '#2b7de9', 'Extract Images', 'Extract all embedded photos and graphics to ZIP.', 'tools/extract-images/', True),
+
+    # Edit & Stamp
+    ('edit', 'rotate', '#0aa3a3', 'Rotate PDF', 'Rotate one or all pages of your PDF document.', 'tools/rotate-pdf/', True),
+    ('edit', 'watermark', '#e5322d', 'Watermark PDF', 'Stamp text or image watermark with cursor positioning.', 'tools/watermark-pdf/', True),
+    ('edit', 'number', '#e58a1c', 'Page Numbers', 'Add customized page numbers to your PDF.', 'tools/page-numbers/', True),
+
+    # Security & Sign
+    ('security', 'sign', '#8a3ee5', 'Sign PDF', 'Draw, type, or upload your signature to place on any page.', 'tools/sign-pdf/', True),
+    ('security', 'lock', '#c81e1e', 'Protect PDF', 'Add password encryption to secure your PDF.', 'tools/protect-pdf/', True),
+    ('security', 'unlock', '#1ba94c', 'Unlock PDF', 'Remove password protection and restrictions from PDF.', 'tools/unlock-pdf/', True),
+    ('security', 'compare', '#2b5ce9', 'Compare PDF', 'Compare two PDFs side-by-side or with visual diff.', 'tools/compare-pdf/', True),
 ]
 
 ICONS = {
@@ -101,11 +122,25 @@ def footer(root):
 
 
 def build_index():
+    tab_html = ''
+    for cat_key, cat_title, cat_icon in CATEGORIES:
+        count = len(TOOLS) if cat_key == 'all' else len([t for t in TOOLS if t[0] == cat_key])
+        active = ' active' if cat_key == 'all' else ''
+        tab_html += f'''<button type="button" class="category-tab{active}" data-category="{cat_key}">
+          <span>{cat_icon}</span>
+          <span>{cat_title}</span>
+          <span class="tab-count">{count}</span>
+        </button>'''
+
     cards = ''
-    for icon, color, title, desc, href, live in TOOLS:
+    for cat, icon, color, title, desc, href, live in TOOLS:
         cls = 'tool-card' if live else 'tool-card disabled'
         badge = '<span class="badge">Coming soon</span>' if not live else ''
-        cards += f'''<a class="{cls}" href="{href.replace('tools/', 'tools/').rstrip('/') + '/' if live else '#'}">
+        cards += f'''<a class="{cls}" 
+         href="{href.replace('tools/', 'tools/').rstrip('/') + '/' if live else '#'}"
+         data-category="{cat}"
+         data-title="{title.lower()}"
+         data-desc="{desc.lower()}">
         {badge}
         <span class="icon" style="background:{color}">{ICONS[icon]}</span>
         <h3>{htmlmod.escape(title)}</h3>
@@ -120,8 +155,26 @@ def build_index():
 </section>
 
 <section class="container">
-  <div class="tool-grid">
+  <div class="tool-controls-wrap">
+    <div class="tool-search-box">
+      <span class="search-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <input type="text" id="toolSearchInput" placeholder="Search for any tool (e.g. sign, merge, compress, protect)..." autocomplete="off">
+    </div>
+
+    <div class="category-tabs" id="categoryTabs">
+      {tab_html}
+    </div>
+  </div>
+
+  <div class="tool-grid" id="mainToolGrid">
     {cards}
+  </div>
+
+  <div id="noResultsMsg" style="display:none; text-align:center; padding:50px 20px; color:var(--ink-soft);">
+    <p style="font-size:1.4rem; font-weight:700; color:var(--ink); margin-bottom:6px;">No tools found</p>
+    <p>Try searching for different keywords like "compress", "sign", "word", or "rotate".</p>
   </div>
 </section>
 
@@ -136,6 +189,55 @@ def build_index():
     <li><strong>Cross-platform</strong> &mdash; works on Windows, Mac, Linux, Android and iOS, in any modern browser.</li>
   </ul>
 </section>
+
+<script>
+(function() {{
+  var searchInput = document.getElementById('toolSearchInput');
+  var categoryTabs = document.querySelectorAll('.category-tab');
+  var toolCards = document.querySelectorAll('.tool-card');
+  var noResults = document.getElementById('noResultsMsg');
+
+  var currentCategory = 'all';
+
+  function filterTools() {{
+    var query = (searchInput.value || '').trim().toLowerCase();
+    var visibleCount = 0;
+
+    toolCards.forEach(function(card) {{
+      var cat = card.getAttribute('data-category');
+      var title = card.getAttribute('data-title');
+      var desc = card.getAttribute('data-desc');
+
+      var matchesCat = (currentCategory === 'all' || cat === currentCategory);
+      var matchesQuery = !query || title.includes(query) || desc.includes(query);
+
+      if (matchesCat && matchesQuery) {{
+        card.style.display = 'flex';
+        visibleCount++;
+      }} else {{
+        card.style.display = 'none';
+      }}
+    }});
+
+    if (noResults) {{
+      noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }}
+  }}
+
+  categoryTabs.forEach(function(tab) {{
+    tab.addEventListener('click', function() {{
+      categoryTabs.forEach(function(t) {{ t.classList.remove('active'); }});
+      tab.classList.add('active');
+      currentCategory = tab.getAttribute('data-category');
+      filterTools();
+    }});
+  }});
+
+  if (searchInput) {{
+    searchInput.addEventListener('input', filterTools);
+  }}
+}})();
+</script>
 '''
     return header('', 'Daily1Step PDF — Free Online PDF Tools | 22 Browser-Based PDF Tools', 'Every tool you need to work with PDFs in one place: 22 free client-side PDF tools.') + body + footer('')
 
