@@ -44,6 +44,7 @@
     currentFile = file;
     fileNameEl.textContent = file.name;
     fileSizeEl.textContent = formatSize(file.size);
+    if (dropzone) dropzone.style.display = 'none';
     fileInfo.style.display = 'block';
     passwordWrap.style.display = 'none';
     pwError.style.display = 'none';
@@ -81,6 +82,7 @@
 
   removeFileBtn.addEventListener('click', function () {
     currentFile = null;
+    if (dropzone) dropzone.style.display = 'block';
     fileInfo.style.display = 'none';
     actions.style.display = 'none';
     passwordWrap.style.display = 'none';

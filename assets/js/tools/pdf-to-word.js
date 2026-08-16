@@ -39,7 +39,8 @@
       pageCount = pdf.numPages;
       fileNameEl.textContent = file.name;
       pageCountEl.textContent = pageCount + ' page' + (pageCount === 1 ? '' : 's');
-      fileInfo.style.display = 'block';
+      if (dropzone) dropzone.style.display = 'none';
+    fileInfo.style.display = 'block';
       actions.style.display = 'block';
     }).catch(function (err) {
       console.error(err);
@@ -63,6 +64,7 @@
   removeFileBtn.addEventListener('click', function () {
     currentFile = null;
     pageCount = 0;
+    if (dropzone) dropzone.style.display = 'block';
     fileInfo.style.display = 'none';
     actions.style.display = 'none';
   });

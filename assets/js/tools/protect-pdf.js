@@ -46,6 +46,7 @@
     }
     currentFile = file;
     fileNameEl.textContent = file.name;
+    if (dropzone) dropzone.style.display = 'none';
     fileInfo.style.display = 'block';
     actions.style.display = 'none';
     pwMismatch.style.display = 'none';
@@ -85,6 +86,7 @@
   removeFileBtn.addEventListener('click', function () {
     currentFile = null;
     cachedBuffer = null;
+    if (dropzone) dropzone.style.display = 'block';
     fileInfo.style.display = 'none';
     actions.style.display = 'none';
     userPwInput.value = '';

@@ -48,6 +48,7 @@
     currentFile = file;
     fileNameEl.textContent = file.name;
     fileSizeEl.textContent = formatSize(file.size);
+    if (dropzone) dropzone.style.display = 'none';
     fileInfo.style.display = 'block';
     actions.style.display = 'block';
   }
@@ -67,6 +68,7 @@
 
   removeFileBtn.addEventListener('click', function () {
     currentFile = null;
+    if (dropzone) dropzone.style.display = 'block';
     fileInfo.style.display = 'none';
     actions.style.display = 'none';
   });
@@ -287,6 +289,7 @@
 
   resetBtn.addEventListener('click', function () {
     currentFile = null;
+    if (dropzone) dropzone.style.display = 'block';
     fileInfo.style.display = 'none';
     actions.style.display = 'none';
     resultBox.style.display = 'none';
