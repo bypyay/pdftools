@@ -208,12 +208,13 @@ img {
    Search Bar & Category Filter Tabs
    ========================================================================== */
 .tool-controls-wrap {
-  max-width: 860px;
-  margin: 0 auto 30px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 }
 
 .tool-search-box {
@@ -224,10 +225,10 @@ img {
 
 .tool-search-box input {
   width: 100%;
-  padding: 13px 20px 13px 44px;
+  padding: 12px 20px 12px 42px;
   border: 1.5px solid var(--border);
   border-radius: 50px;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-family: inherit;
   background: var(--bg);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
@@ -243,7 +244,7 @@ img {
 
 .tool-search-box .search-icon {
   position: absolute;
-  left: 16px;
+  left: 15px;
   top: 50%;
   transform: translateY(-50%);
   color: var(--ink-soft);
@@ -255,14 +256,16 @@ img {
 .category-tabs {
   display: flex;
   flex-wrap: nowrap;
-  gap: 8px;
-  justify-content: center;
+  gap: 6px;
+  justify-content: flex-start;
   align-items: center;
   max-width: 100%;
+  width: max-content;
+  margin: 0 auto;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 4px 8px;
+  padding: 4px 10px;
 }
 
 .category-tabs::-webkit-scrollbar {
@@ -273,15 +276,15 @@ img {
   background: var(--bg);
   border: 1.5px solid var(--border);
   border-radius: 50px;
-  padding: 7px 15px;
-  font-size: 0.84rem;
+  padding: 6px 13px;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--ink-soft);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   box-shadow: var(--shadow-sm);
   white-space: nowrap;
   flex-shrink: 0;
@@ -304,8 +307,8 @@ img {
 
 .category-tab .tab-count {
   background: rgba(0, 0, 0, 0.08);
-  font-size: 0.74rem;
-  padding: 1px 7px;
+  font-size: 0.72rem;
+  padding: 1px 6px;
   border-radius: 10px;
   font-weight: 700;
 }
