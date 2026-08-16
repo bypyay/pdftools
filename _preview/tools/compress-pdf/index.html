@@ -45,22 +45,50 @@
         <button class="remove" id="removeFile" title="Remove">&times;</button>
       </div>
 
-      <div style="margin-top:20px;">
-        <label style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <input type="radio" name="level" value="low"> Low compression — best quality, smaller size reduction
-        </label>
-        <label style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <input type="radio" name="level" value="recommended" checked> Recommended compression — good quality, good size reduction
-        </label>
-        <label style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <input type="radio" name="level" value="high"> High compression — smallest size, lower quality
-        </label>
-        <label style="display:flex; align-items:center; gap:8px;">
-          <input type="radio" name="level" value="target"> Custom target size
-        </label>
-        <div id="targetSizeWrap" style="display:none; margin-top:10px; margin-left:26px;">
-          <input type="number" id="targetSizeInput" min="1" step="1" placeholder="e.g. 200" style="width:120px; padding:8px; border:1px solid var(--border); border-radius:6px; font-size:.95rem;"> <span id="targetUnitLabel">KB</span>
-          <p style="color:var(--ink-soft); font-size:.8rem; margin-top:6px;">We'll search for the highest quality that fits under this size. Very small targets may not be reachable while keeping pages readable — you'll get the smallest size we could manage instead.</p>
+      <div class="option-cards-wrap" style="margin-top:24px;">
+        <label style="display:block; font-weight:700; font-size:1rem; margin-bottom:10px; color:var(--ink);">Choose Compression Level</label>
+        <div class="option-grid">
+          <label class="option-card">
+            <input type="radio" name="level" value="low">
+            <div class="option-card-content">
+              <span class="option-title">Less Compression</span>
+              <span class="option-desc">High quality, smaller size reduction</span>
+            </div>
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="level" value="recommended" checked>
+            <div class="option-card-content">
+              <span class="option-badge">Recommended</span>
+              <span class="option-title">Good Compression</span>
+              <span class="option-desc">Good quality, balanced size reduction</span>
+            </div>
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="level" value="high">
+            <div class="option-card-content">
+              <span class="option-title">Extreme Compression</span>
+              <span class="option-desc">Smallest size, lower image quality</span>
+            </div>
+          </label>
+
+          <label class="option-card">
+            <input type="radio" name="level" value="target">
+            <div class="option-card-content">
+              <span class="option-title">Custom Target</span>
+              <span class="option-desc">Set target size in KB</span>
+            </div>
+          </label>
+        </div>
+
+        <div id="targetSizeWrap" style="display:none; margin-top:16px; padding:16px; background:var(--bg-soft); border-radius:12px; border:1.5px solid var(--border);">
+          <label style="display:block; font-weight:600; font-size:.9rem; margin-bottom:8px; color:var(--ink);">Target File Size</label>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <input type="number" id="targetSizeInput" min="1" step="1" placeholder="e.g. 200" style="width:140px; padding:10px 14px; border:1.5px solid var(--border); border-radius:8px; font-size:1rem; font-weight:600;">
+            <span id="targetUnitLabel" style="font-weight:700; color:var(--ink);">KB</span>
+          </div>
+          <p style="color:var(--ink-soft); font-size:.82rem; margin:8px 0 0;">We'll search for the highest quality that fits under this size.</p>
         </div>
       </div>
     </div>

@@ -901,19 +901,113 @@ img {
 
 .handoff-banner {
   max-width: 760px;
-  margin: 0 auto 20px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  background: var(--red-light);
-  border: 1px solid rgba(229, 50, 45, 0.2);
-  color: var(--ink);
-  font-size: 0.92rem;
+  margin: 0 auto 24px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 1.5px solid #86efac;
+  color: #166534;
+  font-size: 0.95rem;
   font-weight: 600;
   display: none;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  box-shadow: 0 8px 20px -4px rgba(16, 185, 129, 0.15);
+  animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.handoff-banner span:first-child {
+  width: 26px;
+  height: 26px;
+  background: #10b981;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+/* ==========================================================================
+   Option Grid & Option Cards (iLovePDF Style Choices)
+   ========================================================================== */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.option-card {
+  position: relative;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 16px;
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   box-shadow: var(--shadow-sm);
-  animation: slideDown 0.4s ease;
+}
+
+.option-card:hover {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.option-card input[type=radio], .option-card input[type=checkbox] {
+  margin-top: 3px;
+  accent-color: var(--red);
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+.option-card:has(input:checked) {
+  border-color: var(--red);
+  background: var(--red-light);
+  box-shadow: 0 4px 16px rgba(229, 50, 45, 0.15);
+}
+
+.option-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.option-card:has(input:checked) .option-title {
+  color: var(--red);
+}
+
+.option-desc {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.4;
+}
+
+.option-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--red);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 4px;
 }
 
 @keyframes slideDown {
