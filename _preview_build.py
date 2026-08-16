@@ -19,7 +19,7 @@ TOOLS = [
     ('image', '#2b7de9', 'PDF to JPG', 'Convert every PDF page into a JPG image.', 'tools/pdf-to-jpg/', True),
     ('file', '#8a3ee5', 'JPG to PDF', 'Turn your JPG or PNG images into a PDF.', 'tools/jpg-to-pdf/', True),
     ('rotate', '#0aa3a3', 'Rotate PDF', 'Rotate one or all pages of your PDF.', 'tools/rotate-pdf/', True),
-    ('lock', '#c81e1e', 'Protect PDF', 'Add a password to secure your PDF.', '#', False),
+    ('lock', '#c81e1e', 'Protect PDF', 'Add a password to secure your PDF.', 'tools/protect-pdf/', True),
     ('unlock', '#1ba94c', 'Unlock PDF', 'Remove password protection from a PDF.', 'tools/unlock-pdf/', True),
     ('watermark', '#e5322d', 'Watermark PDF', 'Stamp text or image watermark on pages.', 'tools/watermark-pdf/', True),
     ('word', '#2b5ce9', 'PDF to Word', 'Convert your PDF into an editable DOCX.', 'tools/pdf-to-word/', True),
@@ -170,7 +170,7 @@ if __name__ == '__main__':
     shutil.copytree(os.path.join(ROOT, 'vendor'), os.path.join(OUT, 'vendor'))
     build_index()
     for tool_dir in ['merge-pdf', 'split-pdf', 'compress-pdf', 'pdf-to-jpg', 'jpg-to-pdf',
-                      'rotate-pdf', 'delete-pages', 'watermark-pdf', 'page-numbers', 'unlock-pdf', 'pdf-to-word']:
+                      'rotate-pdf', 'delete-pages', 'watermark-pdf', 'page-numbers', 'unlock-pdf', 'pdf-to-word', 'protect-pdf']:
         php_path = os.path.join(ROOT, 'tools', tool_dir, 'index.php')
         if os.path.exists(php_path):
             build_tool_generic(tool_dir)

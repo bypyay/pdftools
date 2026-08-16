@@ -16,7 +16,7 @@ $tools = [
   ['icon' => 'number', 'color' => '#e58a1c', 'title' => 'Page Numbers', 'desc' => 'Add page numbers to your PDF.', 'href' => 'tools/page-numbers/', 'live' => true],
   ['icon' => 'unlock', 'color' => '#1ba94c', 'title' => 'Unlock PDF', 'desc' => 'Remove password protection from a PDF.', 'href' => 'tools/unlock-pdf/', 'live' => true],
   ['icon' => 'word', 'color' => '#2b5ce9', 'title' => 'PDF to Word', 'desc' => 'Convert your PDF into an editable DOCX.', 'href' => 'tools/pdf-to-word/', 'live' => true],
-  ['icon' => 'lock', 'color' => '#c81e1e', 'title' => 'Protect PDF', 'desc' => 'Add a password to secure your PDF.', 'href' => '#', 'live' => false],
+  ['icon' => 'lock', 'color' => '#c81e1e', 'title' => 'Protect PDF', 'desc' => 'Add a password to secure your PDF.', 'href' => 'tools/protect-pdf/', 'live' => true],
 ];
 ?>
 <section class="hero">
