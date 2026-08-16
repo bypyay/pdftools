@@ -1,0 +1,71 @@
+<?php
+$root = '../../';
+$page_title = 'Merge PDF Files Online Free — Combine PDFs | Daily1Step PDF';
+$page_description = 'Combine multiple PDF files into one document online, free. Reorder pages before merging. Files are processed in your browser and never uploaded.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Merge PDF</h1>
+      <p>Combine PDFs in the order you want. Drag files in, arrange them, and merge.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf" multiple>
+      <p><strong>Click to select PDF files</strong> or drag and drop them here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">You can select multiple files at once</p>
+    </div>
+
+    <div class="thumb-grid" id="thumbGrid" style="display:none;"></div>
+    <p class="thumb-hint" id="thumbHint" style="display:none;">Drag the pages to reorder them before merging.</p>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="mergeBtn">Merge PDF</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Merging...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Your merged PDF is ready</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadLink" download="merged.pdf">Download merged.pdf</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Merge more files</button></div>
+    </div>
+
+    <div class="continue-box" id="continueBox" style="display:none;">
+      <p class="continue-title">Continue to&hellip;</p>
+      <div class="continue-grid" id="continueGrid"></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — everything is processed locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How to merge PDF files</h2>
+      <ol>
+        <li>Click the box above and choose the PDF files you want to combine (or drag and drop them).</li>
+        <li>Drag the page thumbnails to reorder them.</li>
+        <li>Click <strong>Merge PDF</strong> and download your combined file.</li>
+      </ol>
+      <h2>Is it safe?</h2>
+      <p>Yes. Merge PDF runs entirely inside your browser using JavaScript — your PDF files are never uploaded to any server, so your documents stay completely private.</p>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf-lib.min.js"></script>
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/merge-pdf.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

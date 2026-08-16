@@ -1,0 +1,69 @@
+<?php
+$root = '../../';
+$page_title = 'PDF to JPG Online Free — Convert PDF Pages to Images | Daily1Step PDF';
+$page_description = 'Convert every page of your PDF into a JPG image, free. Download all pages as a ZIP. Processed entirely in your browser.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>PDF to JPG</h1>
+      <p>Turn each page of your PDF into a high-quality JPG image.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf">
+      <p><strong>Click to select a PDF file</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">One file at a time</p>
+    </div>
+
+    <div id="fileInfo" style="display:none; max-width:720px; margin:20px auto 0;">
+      <div class="file-row">
+        <span class="name" id="fileName"></span>
+        <span class="size" id="pageCount"></span>
+        <button class="remove" id="removeFile" title="Remove">&times;</button>
+      </div>
+      <div style="margin-top:16px;">
+        <label style="font-weight:600; font-size:.9rem;">Image quality</label>
+        <select id="qualitySelect" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; margin-top:6px;">
+          <option value="1.5">High (larger files)</option>
+          <option value="1" selected>Standard</option>
+          <option value="0.75">Low (smaller files)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="convertBtn">Convert to JPG</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Converting...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Your images are ready</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadLink" download="pages.zip">Download</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Convert another file</button></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — everything is processed locally in your browser.
+    </p>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf-lib.min.js"></script>
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>vendor/jszip.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/pdf-to-jpg.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

@@ -1,0 +1,93 @@
+<?php
+$root = '../../';
+$page_title = 'Split PDF Files Online Free — Extract Pages | Daily1Step PDF';
+$page_description = 'Split a PDF into multiple files or extract specific page ranges, free and online. Files are processed in your browser and never uploaded.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Split PDF</h1>
+      <p>Extract pages from a PDF, or split it into multiple files.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf">
+      <p><strong>Click to select a PDF file</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">One file at a time</p>
+    </div>
+
+    <div id="fileInfo" style="display:none; max-width:820px; margin:20px auto 0;">
+      <div class="file-row">
+        <span class="name" id="fileName"></span>
+        <span class="size" id="pageCount"></span>
+        <button class="remove" id="removeFile" title="Remove">&times;</button>
+      </div>
+
+      <div class="thumb-grid" id="pageThumbGrid" style="display:none; margin-top:18px;"></div>
+
+      <div style="margin-top:20px;">
+        <label style="display:flex; align-items:center; gap:8px; font-weight:600; margin-bottom:8px;">
+          <input type="radio" name="mode" value="all" checked> Split every page into a separate PDF
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; font-weight:600; margin-bottom:8px;">
+          <input type="radio" name="mode" value="select"> Select specific pages <span id="selectedCountText" style="color:var(--ink-soft); font-weight:400; font-size:.85rem;"></span>
+        </label>
+        <label style="display:flex; align-items:center; gap:8px; font-weight:600;">
+          <input type="radio" name="mode" value="ranges"> Extract custom page ranges
+        </label>
+        <div id="rangesInputWrap" style="display:none; margin-top:10px; margin-left:26px;">
+          <input type="text" id="rangesInput" placeholder="e.g. 1-3, 5, 8-10" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; font-size:.95rem;">
+          <p style="color:var(--ink-soft); font-size:.8rem; margin-top:6px;">Each range or page becomes a separate PDF file. Separate with commas.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="splitBtn">Split PDF</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Splitting...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Your split PDF is ready</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadLink" download="split_files.zip">Download ZIP</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Split another file</button></div>
+    </div>
+
+    <div class="continue-box" id="continueBox" style="display:none;">
+      <p class="continue-title">Continue to&hellip;</p>
+      <div class="continue-grid" id="continueGrid"></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — everything is processed locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How to split a PDF</h2>
+      <ol>
+        <li>Upload the PDF you want to split — every page appears as a thumbnail so you can see what you're working with.</li>
+        <li>Choose how to split: every page as its own file, click the thumbnails to select specific pages, or type custom page ranges (e.g. <code>1-3, 5, 8-10</code>).</li>
+        <li>Click <strong>Split PDF</strong> and download a ZIP containing your split files.</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf-lib.min.js"></script>
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>vendor/jszip.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/split-pdf.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>

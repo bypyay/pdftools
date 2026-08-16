@@ -1,0 +1,97 @@
+<?php
+$root = '../../';
+$page_title = 'Add Watermark to PDF Online Free | Daily1Step PDF';
+$page_description = 'Stamp a text watermark across every page of your PDF, free and online. Live preview, adjustable size, color, opacity and angle. Processed entirely in your browser.';
+include __DIR__ . '/../../includes/header.php';
+?>
+<section class="tool-page">
+  <div class="container">
+    <div class="tool-header">
+      <h1>Watermark PDF</h1>
+      <p>Stamp text across every page — great for marking drafts, confidential files, or copies.</p>
+    </div>
+
+    <div class="handoff-banner" id="handoffBanner">
+      <span>&#10003;</span> <span id="handoffBannerText"></span>
+    </div>
+
+    <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="application/pdf">
+      <p><strong>Click to select a PDF file</strong> or drag and drop it here</p>
+      <p style="color:var(--ink-soft); font-size:.85rem;">One file at a time</p>
+    </div>
+
+    <div id="fileInfo" style="display:none; max-width:820px; margin:20px auto 0;">
+      <div class="file-row">
+        <span class="name" id="fileName"></span>
+        <span class="size" id="pageCount"></span>
+        <button class="remove" id="removeFile" title="Remove">&times;</button>
+      </div>
+
+      <div style="display:flex; gap:28px; flex-wrap:wrap; margin-top:20px;">
+        <div style="flex:1; min-width:240px;">
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:4px;">Watermark text</label>
+          <input type="text" id="wmText" value="CONFIDENTIAL" style="width:100%; padding:10px; border:1px solid var(--border); border-radius:6px; margin-bottom:14px;">
+
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:4px;">Font size: <span id="wmSizeVal">48</span></label>
+          <input type="range" id="wmSize" min="12" max="120" value="48" style="width:100%; margin-bottom:14px;">
+
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:4px;">Opacity: <span id="wmOpacityVal">30%</span></label>
+          <input type="range" id="wmOpacity" min="5" max="100" value="30" style="width:100%; margin-bottom:14px;">
+
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:4px;">Rotation: <span id="wmRotationVal">45&deg;</span></label>
+          <input type="range" id="wmRotation" min="-90" max="90" value="45" style="width:100%; margin-bottom:14px;">
+
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:4px;">Color</label>
+          <input type="color" id="wmColor" value="#ff0000" style="width:60px; height:36px; border:1px solid var(--border); border-radius:6px; padding:2px;">
+        </div>
+        <div style="flex:1; min-width:220px; text-align:center;">
+          <label style="display:block; font-weight:600; font-size:.85rem; margin-bottom:8px;">Preview (page 1)</label>
+          <div id="previewWrap" style="display:inline-block; border:1px solid var(--border); border-radius:8px; overflow:hidden; background:var(--bg-soft);"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions" id="actions" style="display:none;">
+      <button class="btn" id="applyBtn">Add Watermark</button>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-bar"><div id="progressBar"></div></div>
+      <div class="status-text" id="statusText">Working...</div>
+    </div>
+
+    <div class="result-box" id="resultBox">
+      <div class="check">&#10003;</div>
+      <h3>Your watermarked PDF is ready</h3>
+      <p id="resultInfo"></p>
+      <a class="btn" id="downloadLink" download="watermarked.pdf">Download watermarked.pdf</a>
+      <div style="margin-top:12px;"><button class="btn secondary" id="resetBtn">Watermark another file</button></div>
+    </div>
+
+    <div class="continue-box" id="continueBox" style="display:none;">
+      <p class="continue-title">Continue to&hellip;</p>
+      <div class="continue-grid" id="continueGrid"></div>
+    </div>
+
+    <p class="privacy-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Your files never leave your device — everything is processed locally in your browser.
+    </p>
+
+    <section class="info-section">
+      <h2>How to watermark a PDF</h2>
+      <ol>
+        <li>Upload your PDF.</li>
+        <li>Type your watermark text and adjust size, opacity, color and angle — the preview updates live.</li>
+        <li>Click <strong>Add Watermark</strong> and download the result.</li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<script src="<?php echo $root; ?>vendor/pdf-lib.min.js"></script>
+<script src="<?php echo $root; ?>vendor/pdf.min.js"></script>
+<script src="<?php echo $root; ?>assets/js/handoff.js"></script>
+<script src="<?php echo $root; ?>assets/js/tools/watermark-pdf.js"></script>
+<?php include __DIR__ . '/../../includes/footer.php'; ?>
