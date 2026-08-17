@@ -95,14 +95,14 @@ def header(root, title, desc):
 <body>
 <header class="site-header">
   <div class="container">
-    <a href="{root}index.html" class="brand">Daily1Step PDF<span class="dot">.</span></a>
+    <a href="{root}index.html" class="brand">Daily1Step<span class="dot">.</span></a>
     <nav class="main-nav">
-      <a href="{root}index.html" style="color:var(--red); font-weight:700;">📄 PDF Tools</a>
-      <a href="https://bypyay.github.io/imagetools/" target="_blank">🖼️ Image Tools</a>
-      <a href="https://bypyay.github.io/audiotools/" target="_blank">🎧 Audio Tools</a>
+      <a href="{root}index.html">All PDF Tools</a>
       <a href="{root}tools/merge-pdf/">Merge PDF</a>
       <a href="{root}tools/split-pdf/">Split PDF</a>
       <a href="{root}tools/compress-pdf/">Compress PDF</a>
+      <a href="{root}tools/pdf-to-word/">PDF to Word</a>
+      <a href="{root}tools/word-to-pdf/">Word to PDF</a>
       <a href="{root}about.html">About</a>
     </nav>
   </div>
