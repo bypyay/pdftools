@@ -90,7 +90,7 @@ def header(root, title, desc):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{htmlmod.escape(title)}</title>
 <meta name="description" content="{htmlmod.escape(desc)}">
-<link rel="stylesheet" href="{root}assets/css/style.css">
+<link rel="stylesheet" href="{root}assets/css/style.css?v=3">
 </head>
 <body>
 <header class="site-header">
@@ -240,7 +240,7 @@ def build_index():
 }})();
 </script>
 '''
-    return header('', 'Daily1Step — Free Online PDF & Image Tools', 'Every tool you need to work with PDFs and Images in one place. 100% client-side and free.') + body + footer('')
+    return header('', 'Daily1Step PDF — Free Online PDF Tools', 'Every tool you need to work with PDFs in one place. 100% client-side, fast and free.') + body + footer('')
 
 
 def render_tool_php(php_path, root_rel):
@@ -249,7 +249,7 @@ def render_tool_php(php_path, root_rel):
 
     # Extract metadata
     m_title = re.search(r"\$page_title\s*=\s*'([^']*)'", content)
-    title = m_title.group(1) if m_title else 'Daily1Step'
+    title = m_title.group(1) if m_title else 'Daily1Step PDF'
     m_desc = re.search(r"\$page_description\s*=\s*'([^']*)'", content)
     desc = m_desc.group(1) if m_desc else ''
 
@@ -263,32 +263,6 @@ def render_tool_php(php_path, root_rel):
 
     return header(root_rel, title, desc) + body.strip() + footer(root_rel)
 
-
-def build_all():
-    if os.path.exists(OUT):
-        shutil.rmtree(OUT)
-    os.makedirs(OUT)
-
-    # Copy static assets & vendor
-    shutil.copytree(os.path.join(ROOT, 'assets'), os.path.join(OUT, 'assets'))
-    shutil.copytree(os.path.join(ROOT, 'vendor'), os.path.join(OUT, 'vendor'))
-
-    # Root index (PDF Tools)
-    with open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8') as f:
-        f.write(build_index())
-
-    # Build PDF tools
-    tools_dir = os.path.join(ROOT, 'tools')
-    for tname in os.listdir(tools_dir):
-        tpath = os.path.join(tools_dir, tname)
-        if os.path.isdir(tpath):
-            php_file = os.path.join(tpath, 'index.php')
-            if os.path.exists(php_file):
-                out_tool_dir = os.path.join(OUT, 'tools', tname)
-                os.makedirs(out_tool_dir, exist_ok=True)
-                html_content = render_tool_php(php_file, '../../')
-                with open(os.path.join(out_tool_dir, 'index.html'), 'w', encoding='utf-8') as f:
-                    f.write(html_content)
 
 def build_all():
     if os.path.exists(OUT):
