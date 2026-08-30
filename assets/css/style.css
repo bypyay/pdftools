@@ -73,8 +73,8 @@ img {
    ========================================================================== */
 .site-header {
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  position: sticky;
-  top: 0;
+  position: relative;
+  
   background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -1490,5 +1490,39 @@ img {
 
   .tool-card p {
     display: none;
+  }
+}
+
+
+/* ── Mobile Responsive Header Cleanliness ── */
+@media (max-width: 992px) {
+  .portal-header, .site-header {
+    display: none !important;
+  }
+}
+
+
+/* ── Mobile Responsive Enhancements for PDF Suite ── */
+@media (max-width: 768px) {
+  .tool-workspace {
+    padding: 12px !important;
+  }
+  .pdf-upload-box {
+    padding: 30px 16px !important;
+  }
+  .pdf-upload-box h3 {
+    font-size: 1.15rem !important;
+  }
+  .pdf-pages-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .btn-pdf-action {
+    width: 100% !important;
+    height: 48px !important;
+  }
+  .pdf-action-bar {
+    flex-direction: column !important;
+    gap: 8px !important;
   }
 }
